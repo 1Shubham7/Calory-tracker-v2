@@ -20,8 +20,8 @@ func main(){
 
 	router.POST("/food/create", handlers.AddFoodEntry)
 
-	router.PUT("/food/update/:id", handlers.AddFoodEntry)
-	router.PUT("/food/update/:ingredient, handlers.AddFoodEntryByEngredient")
+	router.PUT("/food/update/:id", handlers.UpdateFoodEntry)
+	router.PUT("/food/update/:ingredient, handlers.UpdateFoodEntryByEngredient")
 
 	router.DELETE("/food/delete/:id", handlers.DeleteFoodEntry)
 
