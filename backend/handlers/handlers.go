@@ -14,6 +14,10 @@ var ourCollection *mongo.Collection = openCollection(Client, "calories")
 // GET request handlers
 
 func GetFoodEntry(c *gin.Context){ //using gin, you don't have to specifically write the http.Request and http.responseWrite we rather you c gin.context
+
+
+func GetAllFoodEntries(c *gin.Context) {
+
 	var ctx, cancel = context.WithTimeout(context.Background(), 100 *time.Seconds)
 
 	var entries []bson.M //this is a slice of type bson.M
@@ -27,28 +31,26 @@ func GetFoodEntry(c *gin.Context){ //using gin, you don't have to specifically w
 		return
 	}
 }
-
-func GetAllFoodEntries(c *gin.Context) {
 	
 }
 
-func GetFoodEntryByIngredient(){
+func GetFoodEntryByIngredient(c *gin.Context){
 
 }
 
 // POST request handlers 
 
-func AddFoodEntry(){
+func AddFoodEntry(c *gin.Context){
 
 }
 
 // PUT request handlers
 
-func UpdateFoodEntry(){
+func UpdateFoodEntry(c gin.Context){
 
 }
 
-func UpdateFoodEntryByEngredient() {
+func UpdateFoodEntryByEngredient(c *gin.Context) {
 
 }
 
