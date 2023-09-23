@@ -1,4 +1,4 @@
-package routes
+package handlers
 
 import (
 	"context"
@@ -30,6 +30,16 @@ func GetAllFoodEntries(c *gin.Context) {
 		fmt.Println(err)
 		return
 	}
+
+	// now we get raw data from find function, bringing it to entries
+	if err = cursor.All(ctx, &entries); err !=nil{
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		fmt.Println(err)
+		return
+	}
+	defer cancel()
+	fmt.Println(entries)
+	c.JSON(http.StatusOK, entries)
 }
 	
 }
