@@ -10,6 +10,7 @@ import (
 )
 
 func DBinstance() *mongo.Client{ //CLient is a struct. and mongo.Client means there is a Client stuck in Mongodb package
+	// in this function we are creating a client struct and returning it
 	MongoDb := "mongodb://localhost:27017/caltechdb"
 	client, err := mongo.NewClient(options.Client().ApplyURI(MongoDb))
 	if err != nil{
@@ -25,3 +26,7 @@ func DBinstance() *mongo.Client{ //CLient is a struct. and mongo.Client means th
 	fmt.Println("Connected to the MongoDB Database")
 	return client
 }
+
+var Client *mongo.Client = DBinstance()
+//  this is what we are using in the handlers.go 11th line
+
