@@ -9,6 +9,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"github.com/1shubham7/caltech/models"
 )
 
 var ourCollection *mongo.Collection = OpenCollection(Client, "calories")
@@ -64,7 +65,30 @@ func GetFoodEntryByIngredient(c *gin.Context){
 // POST request handlers 
 
 func AddFoodEntry(c *gin.Context){
+	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+	var entry models.Food
+	if err := c.BindJSON(&entry); err!= nil{ //this will bind mongo data to something that go understands
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		fmt.Println(err)
+		return
+	}
+	validationErr := validate.Struct(entry)
+	if validationErr != nil {	
+		c.JSON(http.StatusInternalServerError, gin.H{"error": validationErr.Error()})
+		fmt.Println(validationErr)
+		return
+	}
+	entry.ID = primitive.NewObjectID() //adding an id to the object
+	result, insertErr := ourCollection.InsertOne(ctx, entry)
 
+	if insertErr != nil {
+		errMsg := fmt.Sprintf("order item was not created")
+		c.JSON(http.StatusInternalServerError, gin.H{"error": errMsg})
+		fmt.Println(insertErr)
+		return
+	}
+	defer cancel()
+	c.JSON(http.StatusOK, result)
 }
 
 // PUT request handlers
