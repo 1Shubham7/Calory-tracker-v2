@@ -3,26 +3,40 @@ package handlers
 import (
 	"context"
 	"fmt"
+	"time"
 	"net/http"
+	"go.modules.org/mongo-driver/mongo"
+	"gopkg.in/mgo.v2/bson"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-var ourCollection *mongo.Collection = openCollection(Client, "calories")
+var ourCollection *mongo.Collection = OpenCollection(Client, "calories")
 // we will get the calory collection in the var ourCollection
 
 // GET request handlers
 
 func GetFoodEntry(c *gin.Context){ //using gin, you don't have to specifically write the http.Request and http.responseWrite we rather you c gin.context
-
+	EntryID := c.Params.ByName("id")
+	docID, _ := primitive.ObjectIDFromHex(EntryID) //primitive package helps us with ids
+	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+	var entry bson.M
+	if err := ourCollection.FindOne(ctx, bson.M{"_id": docID}).Decode(&entry); err != nil {
+		c.JSON(http.StatusInternalServerError,  gin.H{"error": err.Error()})
+		fmt.Println(err)
+		return
+	}
+	defer cancel()
+	fmt.Println(entry)
+	c.JSON(http.StatusOK, entry)
+}
 
 func GetAllFoodEntries(c *gin.Context) {
 
-	var ctx, cancel = context.WithTimeout(context.Background(), 100 *time.Seconds)
-
+	var ctx, cancel = context.WithTimeout(context.Background(), 100 *time.Second)
 	var entries []bson.M //this is a slice of type bson.M
 
-	cursor, err := entryCollection.Find(ctx, bson.M{}) // this will find everything
+	cursor, err := ourCollection.Find(ctx, bson.M{}) // this will find everything
 	// and anytime you run a database collection or function, run an error handler
 
 	if err != nil{
@@ -42,7 +56,6 @@ func GetAllFoodEntries(c *gin.Context) {
 	c.JSON(http.StatusOK, entries)
 }
 	
-}
 
 func GetFoodEntryByIngredient(c *gin.Context){
 
