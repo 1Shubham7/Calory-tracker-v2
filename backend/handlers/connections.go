@@ -30,3 +30,7 @@ func DBinstance() *mongo.Client{ //CLient is a struct. and mongo.Client means th
 var Client *mongo.Client = DBinstance()
 //  this is what we are using in the handlers.go 11th line
 
+func OpenCollection(client *mongo.Client, collectionName string) *mongo.Collection { //this funciton is being used by the handler.go line 11
+	var collection *mongo.Collection = client.Database("caltechdb").Collection(collectionName)
+	return collection
+}
