@@ -3,13 +3,15 @@ package handlers
 import (
 	"context"
 	"fmt"
-	"time"
 	"net/http"
-	"go.modules.org/mongo-driver/mongo"
-	"gopkg.in/mgo.v2/bson"
-	"github.com/gin-gonic/gin"
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"time"
+
 	"github.com/1shubham7/caltech/models"
+	"github.com/gin-gonic/gin"
+	"go.modules.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+	"gopkg.in/mgo.v2/bson"
 )
 
 var ourCollection *mongo.Collection = OpenCollection(Client, "calories")
@@ -59,7 +61,24 @@ func GetAllFoodEntries(c *gin.Context) {
 	
 
 func GetFoodEntryByIngredient(c *gin.Context){
+	ingredient := c.Params.ByName("id")
+	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+	var entries []bson.M
+	cursor, err := ourCollection.Find(ctx, bson.M{"ingredient": ingredient})
+	if err != nil{
+		c.JSON(http.StatusInternalServerError, gin.H{"error" : err.Error()})
+		fmt.Println(err)
+		return
+	}
+	if err = cursor.All(ctx, &entries); err != nil{
+		c.JSON(http.StatusInternalServerError, gin.H{"error" : err.Error()})
+		fmt.Println(err)
+		return
+	}
+	defer cancel()
+	fmt.Println(entries)
 
+	c.JSON(http.StatusOK, entries)
 }
 
 // POST request handlers 
