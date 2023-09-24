@@ -5,15 +5,15 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-
+	"github.com/go-playground/validator/v10"
 	"github.com/1shubham7/caltech/models"
 	"github.com/gin-gonic/gin"
-	"go.modules.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"gopkg.in/mgo.v2/bson"
 )
 
+var validate = validator.New()
 var ourCollection *mongo.Collection = OpenCollection(Client, "calories")
 // we will get the calory collection in the var ourCollection
 
@@ -112,7 +112,7 @@ func AddFoodEntry(c *gin.Context){
 
 // PUT request handlers
 
-func UpdateFoodEntry(c gin.Context){
+func UpdateFoodEntry(c *gin.Context){
 	entryID := c.Params.ByName("id")
 	docID, _ := primitive.ObjectIDFromHex(entryID)
 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
@@ -163,7 +163,7 @@ func UpdateFoodEntryByEngredient(c *gin.Context) {
 		return
 	}
 	result, err := ourCollection.UpdateOne(ctx, bson.M{"_id":docID},
-	bson.D{{"$set",bson.D{{"ingredients": ingredient.Ingredients}}}},
+		bson.D{{"$set",bson.D{{"ingredients", ingredient.Ingredients}}}},
 	)
 
 	if err != nil{
@@ -185,7 +185,7 @@ func DeleteFoodEntry(c *gin.Context){
 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 	// just the timeout one
 
-	result, err := ourCollection.DeleteOne(context, bson.M{"_id": docId})
+	result, err := ourCollection.DeleteOne(ctx, bson.M{"_id": docId})
 	// delete the id or docId and store the result in the result collection
 	
 	if err != nil{
