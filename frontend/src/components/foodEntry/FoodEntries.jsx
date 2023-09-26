@@ -8,9 +8,9 @@ export default function FoodEntries() {
         <h1>Calroies</h1>
       </div>
       <div>
-            {entires && entries.map((entry, i) => (
+            {/* {entires && entries.map((entry, i) => (
                 <FoodEntry foodEntry={foodEntry} />
-            ))}
+            ))} */}
       </div>
     </div>
   )
