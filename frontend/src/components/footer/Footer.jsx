@@ -30,7 +30,6 @@ export default function Footer() {
       <h1 className="copyright">© 2023 All Rights Reserved</h1>
       </div>
     </div>
-    
     </>
   )
 }

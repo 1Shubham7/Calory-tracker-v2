@@ -31,6 +31,7 @@
 
 .social-logo{
     transition: transform 0.7s ease;
+    
 }
 
 .social-logo:hover{
@@ -45,6 +46,8 @@
 .text-para{
     padding-right: 12rem;
     padding-top: 1.5rem;
+    text-align: center;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.34);
 }
 
 .text-links{
@@ -61,7 +64,7 @@
 /* for hover effect */
 
 .news{
-    color: white;
+    color: #fff;
 }
 
 .news:hover::after{
