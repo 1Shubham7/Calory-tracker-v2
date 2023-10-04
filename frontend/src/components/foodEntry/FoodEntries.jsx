@@ -2,6 +2,7 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import Entry from './FoodEntry'
+import {Button, Form, Container, Modal} from 'react-bootstrap'
 
 const Entries =() => {
 
@@ -63,9 +64,31 @@ const Entries =() => {
       }
     })
   }
+
+  function changeSingleEntry(){
+    changeEntry.change = false;
+    var url ="http://localhost:6000/food/update/" + changeEntry.id;
+    axios.put(url, newEntry).then(response => {
+      if (response.status == 200){
+        setRefreshData(true)
+      }
+    })
+  }
+
+  function changeIngredientForEntry(){
+    changeIngredient.change = false
+    var url = "http://localhost:6000/ingredient/update/" + changeIngredient.id
+    axios.put(url, {
+      "ingredient": newIngredientName
+    }).then(response => {
+      if (response.status == 200 ){
+        setRefreshData(true)
+      }
+    })
+  }
   
   function deleteSingleEntry(id){
-    var url = "http://localhost:6000/food/delete" + id
+    var url = "http://localhost:6000/food/delete/" + id
     axios.delete(url, {
   
     }).then(response => {
