@@ -1,17 +1,19 @@
 import React from 'react'
-import FoodEntry from './FoodEntry'
+import {useState, useEffect} from 'react'
+import axios from 'axios'
+import Entry from './FoodEntry'
 
-export default function FoodEntries() {
+const Entries =() => {
   return (
-    <div>
-      <div>
-        <h1>Calroies</h1>
-      </div>
-      <div>
-            {/* {entires && entries.map((entry, i) => (
-                <FoodEntry foodEntry={foodEntry} />
-            ))} */}
-      </div>
+    <>
+    <div className='container'>
+      <div onClick={() => setAddNewEntry(true)}>Today's calories</div>
     </div>
-  )
+    <div className="container">
+      {entries != null && entries.map((entry, i)=>(
+        <Entry entryData={entry} setChangeIngredient={setChangeIngredient} setChangeEntry={setChangeEntry} deleteSingleEntry={deleteSingleEntry}/>
+      ))}
+    </div>
+    </>
+  );
 }
