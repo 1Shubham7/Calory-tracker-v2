@@ -82,7 +82,6 @@ func GetFoodEntryByIngredient(c *gin.Context){
 }
 
 // POST request handlers 
-
 func AddFoodEntry(c *gin.Context){
 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 	var entry models.Food

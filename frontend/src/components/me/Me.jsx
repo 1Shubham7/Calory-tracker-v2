@@ -11,9 +11,8 @@ export default function Me() {
           <p className="love">Made with Love by</p>
           <p className="name">Shubham Singh</p>
           <p className="description">
-            GSSoC'23 | Web Dev | Dev Ops | Android dev | Open-source Enthusiast
-            | Technical Writer | Postman Student Expert | First year Undergrad
-            (Computer Science Eng.)
+            Technical writing intern @GeeksforGeeks | Ex-Hugo Intern @Hooman Digital | Contributor - CNCF ORAS | GSSoC'23 Top 100 | CNCF Zero to Merge | Web Dev | DevOps | 
+            Postman Student Expert | Second year Undergrad (CSE)
           </p>
         </div>
         <img src={myPic} alt="hi" className="pic" />

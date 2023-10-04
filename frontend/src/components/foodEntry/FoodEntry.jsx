@@ -1,15 +1,20 @@
 import React from 'react'
 
 export default function FoodEntry() {
-    const Entry = ({foodEntry, setChangeIngredient, deleteFoodEntry, setChangeEntry}) => {
+    const Entry = ({entryData, changeIngredient, deleteFoodEntry, changeEntry}) => {
         // the struct we created in backend , all the data from there will come to foodEntry
         return (
             <div>
                 <table>
-                    <td>Food: {foodEntry.food}</td>
-                    <td>Fat: {foodEntry.food}</td>
-                    <td>Calroies: {foodEntry.food}</td>
-                    <td>Ingredients: {foodEntry.food}</td>
+                    <tr>
+                    <td>Food: {entryData !== undefined && entryData.food}</td> #making sure that entryData is not undefined
+                    <td>Fat: {entryData !== undefined && entryData.fat}</td>
+                    <td>Calroies: {entryData !== undefined && entryData.calories}</td>
+                    <td>Ingredients: {entryData !== undefined && entryData.ingredients}</td>
+                    <td><div onClick={()=> deleteFoodEntry(entryData._id)}>Delete entry</div></td>
+                    <td><div onClick={()=> changeIngredient()}>Change Ingredients</div></td>
+                    <td><div onClick={()=> changeEntry()}>Change entry</div></td>
+                    </tr>
                 </table>
               
             </div>
