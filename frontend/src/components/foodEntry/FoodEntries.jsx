@@ -17,3 +17,19 @@ const Entries =() => {
     </>
   );
 }
+
+function addSingleEntry(){
+  setAddNewEntry(false)
+  var url = "http://localhost:6000/food/create"
+  // axios.post(url, functions)
+  axios.post(url, {
+    "ingredients": newEntry.ingredients,
+    "food": newEntry.food,
+    "fat": parseFloat(newEntry.fat),
+    "calories": newEntry.calories
+  }).then(response => {
+    if (response.status == 200){
+      setRefreshData(true)
+    }
+  })
+}
