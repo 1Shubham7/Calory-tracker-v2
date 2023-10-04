@@ -33,3 +33,14 @@ function addSingleEntry(){
     }
   })
 }
+
+function deleteSingleEntry(id){
+  var url = "http://localhost:6000/food/delete" + id
+  axios.delete(url, {
+
+  }).then(response => {
+    if (response.status == 200){
+      setRefreshData(true)
+    }
+  })
+}
