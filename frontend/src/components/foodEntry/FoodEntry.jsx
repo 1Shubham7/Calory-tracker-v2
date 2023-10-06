@@ -1,22 +1,25 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {Button, Card, Row, Col} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.css'
 
-    const Entry = ({entryData, setChangeIngredient, deleteFoodEntry, setChangeEntry}) => {
+
+    const Entry = ({entryData, setChangeIngredient, deleteSingleEntry, setChangeEntry}) => {
         // the struct we created in backend , all the data from there will come to foodEntry
         return (
-            <div>
-                <table>
-                    <tr>
-                    <td>Food: {entryData !== undefined && entryData.food}</td> #making sure that entryData is not undefined
-                    <td>Fat: {entryData !== undefined && entryData.fat}</td>
-                    <td>Calroies: {entryData !== undefined && entryData.calories}</td>
-                    <td>Ingredients: {entryData !== undefined && entryData.ingredients}</td>
-                    <td><div onClick={()=> deleteFoodEntry(entryData._id)}>Delete entry</div></td>
-                    <td><div onClick={()=> changeIngredient()}>Change Ingredients</div></td>
-                    <td><div onClick={()=> changeEntry()}>Change entry</div></td>
-                    </tr>
-                </table>
+            <Card>
+                <Row>
+                    <Col>
+                    <Col>Food: {entryData !== undefined && entryData.food}</Col> #making sure that entryData is not undefined
+                    <Col>Fat: {entryData !== undefined && entryData.fat}</Col>
+                    <Col>Calories: {entryData !== undefined && entryData.calories}</Col>
+                    <Col>Ingredients: {entryData !== undefined && entryData.ingredients}</Col>
+                    <Col><Button onClick={()=> deleteSingleEntry(entryData._id)}>Delete entry</Button></Col>
+                    <Col><Button onClick={()=> changeIngredient()}>Change Ingredients</Button></Col>
+                    <Col><Button onClick={()=> changeEntry()}>Change entry</Button></Col>
+                    </Col>
+                </Row>
               
-            </div>
+            </Card>
           )
 
 
@@ -38,7 +41,5 @@ import React from 'react'
             )
         }
     }
-
-
     
 export default Entry

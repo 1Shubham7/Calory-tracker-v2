@@ -14,7 +14,7 @@ func main(){
 
 	// GET
 	router.GET("/food/:id", handlers.GetFoodEntry)
-	router.GET("/allfood/", handlers.GetAllFoodEntries)
+	router.GET("/allfood", handlers.GetAllFoodEntries)
 	router.GET("/ingredient/:ingredient", handlers.GetFoodEntryByIngredient)
 
 	// POST
@@ -22,7 +22,7 @@ func main(){
 
 	// PUT
 	router.PUT("/food/update/:id", handlers.UpdateFoodEntry)
-	router.PUT("/ingredient/update/:id, handlers.UpdateFoodEntryByEngredient")
+	router.PUT("/ingredient/update/:id", handlers.UpdateFoodEntryByEngredient)
 
 	// DELETE
 	router.DELETE("/food/delete/:id", handlers.DeleteFoodEntry)

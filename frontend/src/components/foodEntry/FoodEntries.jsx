@@ -12,18 +12,17 @@ const Entries =() => {
   const [changeIngredient, setChangeIngredient] = useState({"change": false,"id":0})
   const [newIngredientName, setNewIngredientName] = useState("")
   const [addNewEntry, setAddNewEntry] = useState(false)
-  const [newEntry, setNewEntry] = useState({"food":"Khana", "ingredients":"", "fat":0, "calories": 0})
+  const [newEntry, setNewEntry] = useState({"food":"Khana", "ingredients":"", "fat":0.0, "calories": 0})
 
 // For the initial entires shown in the page
   useEffect(() => {
     getAllEntries();
   }, [])
 
-
   if(refreshData){
     setRefreshData(false);
     getAllEntries();
-  } 
+  }
 
   return (
     <>
@@ -44,8 +43,8 @@ const Entries =() => {
 
             <Modal.Body>
                 <Form.Group>
-                    <Form.Label>dish</Form.Label>
-                    <Form.Control onChange={(event) => {newEntry.dish = event.target.value}}></Form.Control>
+                    <Form.Label>food</Form.Label>
+                    <Form.Control onChange={(event) => {newEntry.food = event.target.value}}></Form.Control>
                     <Form.Label>ingredients</Form.Label>
                     <Form.Control onChange={(event) => {newEntry.ingredients = event.target.value}}></Form.Control>
                     <Form.Label>calories</Form.Label>
@@ -79,8 +78,8 @@ const Entries =() => {
             </Modal.Header>
             <Modal.Body>
                 <Form.Group>
-                    <Form.Label>dish</Form.Label>
-                    <Form.Control onChange={(event) => {newEntry.dish = event.target.value}}></Form.Control>
+                    <Form.Label>food</Form.Label>
+                    <Form.Control onChange={(event) => {newEntry.food = event.target.value}}></Form.Control>
                     <Form.Label>ingredients</Form.Label>
                     <Form.Control onChange={(event) => {newEntry.ingredients = event.target.value}}></Form.Control>
                     <Form.Label>calorie</Form.Label>
@@ -97,7 +96,7 @@ const Entries =() => {
   );
 
   function getAllEntries(){
-    var url = "http://localhost:6000/allfood/"
+    var url = "http://localhost:6000/allfood"
     axios.get(url, {
       responseType: 'json'
     }).then(response => {
@@ -109,7 +108,7 @@ const Entries =() => {
   
   function addSingleEntry(){
     setAddNewEntry(false)
-    var url = "http://localhost:6000/food/create"
+    var url = "http://localhost:6000/food/create/"
     // axios.post(url, functions)
     axios.post(url, {
       "ingredients": newEntry.ingredients,
