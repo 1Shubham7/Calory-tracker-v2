@@ -4,7 +4,7 @@ import axios from "axios";
 
 import {Button, Form, Container, Modal} from 'react-bootstrap'
 
-import Entry from './FoodEntry';
+import Entry from './Entry';
 
 const Entries =() =>{
 
@@ -97,7 +97,7 @@ const Entries =() =>{
 
     function changeIngredientForEntry(){
         changeIngredient.change = false
-        var url = "http://localhost:6000/ingredient/update/" + changeIngredient.id
+        var url = "http://localhost:8000/ingredient/update/" + changeIngredient.id
         axios.put(url, {
             "ingredients": newIngredientName
         }).then(response => {
@@ -110,7 +110,7 @@ const Entries =() =>{
 
     function changeSingleEntry(){
         changeEntry.change = false;
-        var url = "http://localhost:6000/entry/update/" + changeEntry.id
+        var url = "http://localhost:8000/entry/update/" + changeEntry.id
         axios.put(url, newEntry)
         .then(response =>{
             if(response.status == 200){
@@ -121,7 +121,7 @@ const Entries =() =>{
 
     function addSingleEntry(){
         setAddNewEntry(false)
-        var url = "http://localhost:6000/entry/create"
+        var url = "http://localhost:8000/entry/create"
         axios.post(url, {
             "ingredients":newEntry.ingredients,
             "dish": newEntry.dish,
@@ -135,7 +135,7 @@ const Entries =() =>{
     }
     
     function deleteSingleEntry(id){
-        var url = "http://localhost:6000/entry/delete/" + id
+        var url = "http://localhost:8000/entry/delete/" + id
         axios.delete(url, {
     
         }).then(response => {
@@ -146,7 +146,7 @@ const Entries =() =>{
     }
     
     function getAllEntries(){
-        var url = "http://localhost:6000/entries"
+        var url = "http://localhost:8000/entries"
         axios.get(url, {
             reponseType: 'json'
         }).then(response => {
