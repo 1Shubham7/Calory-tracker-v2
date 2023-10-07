@@ -64,7 +64,7 @@ func GetFoodEntryByIngredient(c *gin.Context){
 	ingredient := c.Params.ByName("id")
 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 	var entries []bson.M
-	cursor, err := ourCollection.Find(ctx, bson.M{"ingredient": ingredient})
+	cursor, err := ourCollection.Find(ctx, bson.M{"ingredients": ingredient})
 	if err != nil{
 		c.JSON(http.StatusInternalServerError, gin.H{"error" : err.Error()})
 		fmt.Println(err)

@@ -5,9 +5,9 @@ import (
 )
 
 type Food struct {
-	ID primitive.ObjectID `bosn:"id"`
-	Food *string `json:"food"`
-	Ingredients *string `json:"ingredients"`
-	Fat *float64 `json:"fat"`
-	Calories *int `json:"calories"`
+	ID 				primitive.ObjectID 		`bosn:"id"`
+	Food 			*string 				`json:"food"`
+	Ingredients 	*string 				`json:"ingredients"`
+	Fat 			*float64 				`json:"fat"`
+	Calories 		*string 					`json:"calories"`
 }
