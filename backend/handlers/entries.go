@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-
 	"github.com/1shubham7/caltech/models"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
