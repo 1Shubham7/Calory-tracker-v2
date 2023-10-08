@@ -20,6 +20,10 @@ a {
     margin-bottom: -10rem;
 }
 
+/* .mission-health{
+    color: #fff;
+} */
+
 .navbar-links {
     flex: 1;
     display: flex;
@@ -39,6 +43,7 @@ a {
 .navbar-links_container {
     display: flex;
     flex-direction: row;
+    color: #fff;
 }
 
 .coding-buddy{

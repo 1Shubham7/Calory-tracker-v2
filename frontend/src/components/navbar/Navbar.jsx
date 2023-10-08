@@ -10,7 +10,7 @@ export default function Navbar() {
     <div className="navbar">
       <div className="navbar-links">
         <div className="navbar-links_container">
-          <div className="coding-buddy"><a href="#home">Coding Buddy</a></div>
+          <div className="coding-buddy"><a href="#home">Mission health</a></div>
           <p><a href="#facb">Find a Coding Buddy</a></p>
           <p><a href="#about">About</a></p>
           <p><a href="#community">Community</a></p>
