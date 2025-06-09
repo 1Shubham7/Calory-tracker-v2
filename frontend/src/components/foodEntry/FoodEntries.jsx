@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 
 import axios from "axios";
 
+import "./food.css";
+
 import {Button, Form, Container, Modal} from 'react-bootstrap'
 
 import Entry from './FoodEntry';
@@ -27,10 +29,17 @@ const Entries =() =>{
     }
 
     return(
-        <div>
+
+
+
+
+        <div >
+            <center>
             <Container>
         <Button onClick={() => setAddNewEntry(true)}>Track today's calories</Button>
+       
             </Container>
+            <br />
             <Container>
         {entries != null && entries.map((entry, i) =>(
             <Entry entryData={entry} deleteSingleEntry={deleteSingleEntry} setChangeIngredient={setChangeIngredient} setChangeEntry={setChangeEntry} />
@@ -92,6 +101,7 @@ const Entries =() =>{
                 <Button onClick={() => setChangeEntry({"change": false, "id":0})}>Cancel</Button>
             </Modal.Body>
         </Modal>
+        </center>
         </div> 
     );
 

@@ -1,0 +1,18 @@
+.Working{
+    height:20vh;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:50px 0;
+    text-align: center;
+}
+.working2{
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:40px;
+    padding:0;
+
+}

@@ -23,7 +23,7 @@ export default function Footer() {
             <a href="#blogs" className="my-text-link news">Blogs</a>
             <a href="#contribute" className="my-text-link news">Contribute</a>
         </div>
-        <div className="text-para">Coding Buddy helps you find your coding partner. This project is created with React and Golang. The code has been open-sourced on GitHub. The project is licensed under MIT License. Using this website means the user agrees to all the terms and contidions and well as the Privacy Policy of the project.</div>
+        <div className="text-para">Mission Health helps you find your perfect health mentor. This project is created with React and Golang. The code has been open-sourced on GitHub. The project is licensed under MIT License. Using this website means the user agrees to all the terms and contidions and well as the Privacy Policy of the project.</div>
       </div>
       </div>
       <div className="row-two">

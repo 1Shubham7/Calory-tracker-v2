@@ -12,13 +12,26 @@ import Caltech from "./components/caltech/Caltech";
 function App() {
   return (
     <>
-      <Navbar />
-      <Caltech />
-      <QuoteOne />
-      <Me />
-      <QuoteTwo />
-      <Entries />
-      <Footer />
+      <div className="all">
+        <Navbar />
+        <Caltech />
+        <QuoteOne />
+        <Me />
+        {/* <QuoteTwo /> */}
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <Entries />
+        <Footer />
+      </div>
     </>
   );
 }

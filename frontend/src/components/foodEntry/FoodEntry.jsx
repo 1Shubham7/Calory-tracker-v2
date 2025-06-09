@@ -7,7 +7,7 @@ import {Button, Card, Row, Col} from 'react-bootstrap'
 const Entry =({entryData, setChangeIngredient, deleteSingleEntry, setChangeEntry}) => {
     // the struct we created in backend , all the data from there will come to foodEntry
     return(
-        <Card>
+        <Card >
             <Row>
                 <Col>Dish:{entryData !== undefined && entryData.dish}</Col>
                 <Col>Ingredients:{entryData !== undefined && entryData.ingredients}</Col>

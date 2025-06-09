@@ -26,6 +26,18 @@
     flex-basis: 20%;
     padding-right: 8rem;
 }
+.Image{
+    width:250px;
+    height: 250px;
+    border-radius: 20px;
+    margin-top:30px;
+    object-fit: cover;
+}
+.img-container{
+    display: flex;
+    justify-content: center;
+    gap:20px;
+}
 
 .love{
 font-size: 40px;

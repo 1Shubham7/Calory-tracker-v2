@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap');
 
 .quote-text{
-    color: #A31010;
+    width:100%;
+    background-color: #3F7F54;
     font-family: Jolly Lodger;
     font-size: 4.0625rem;
     font-style: normal;
@@ -14,4 +15,16 @@
 .quote-box{
     padding-top: 10rem;
     padding-bottom: 10rem;
+    width:100vw;
+}
+.quoteOne{
+    background-color: #193B26;
+    width:100%;
+    height: 30vh;
+    font-size:xx-large;
+    color:white;
+    padding:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
